@@ -18,56 +18,56 @@ const products = [
     {
         id: 2,
         name: "Product 2",
-        price: 500,
+        price: 399,
         image: `${aws_base_url}IMG-20250221-WA0003.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 3,
         name: "Product 3",
-        price: 500,
+        price: 1200,
         image: `${aws_base_url}IMG-20250221-WA0004.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 4,
         name: "Product 4",
-        price: 500,
+        price: 999,
         image: `${aws_base_url}IMG-20250221-WA0005.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 5,
         name: "Product 4",
-        price: 500,
+        price: 11999,
         image: `${aws_base_url}IMG-20250221-WA0006.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 6,
         name: "Product 4",
-        price: 500,
+        price: 7999,
         image: `${aws_base_url}IMG-20250221-WA0007.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 7,
         name: "Product 4",
-        price: 500,
+        price: 230,
         image: `${aws_base_url}IMG-20250221-WA0008.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 8,
         name: "Product 4",
-        price: 500,
+        price: 339,
         image: `${aws_base_url}IMG-20250221-WA0009.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
     {
         id: 9,
         name: "Product 4",
-        price: 500,
+        price: 699,
         image: `${aws_base_url}IMG-20250221-WA0010.jpg`,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ligula ac neque placerat bibendum non vitae neque."
     },
