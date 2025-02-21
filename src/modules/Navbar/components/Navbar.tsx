@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react"; // Import icons
+import { Link } from "react-router";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -11,9 +12,10 @@ const Navbar = () => {
         <Card className="bg-yellow-200 py-3 px-6 border-0 flex items-center justify-between mt-0">
             {/* Left: Logo */}
             <div className="flex flex-col text-2xl font-bold">
-                
-                <h1>ASHRAFI</h1>
-                <h1>LIGHTS</h1>
+                <Link to="/">
+                    <h1>ASHRAFI</h1>
+                    <h1>LIGHTS</h1>
+                </Link>
             </div>
 
             {/* Hamburger Icon (visible on small screens) */}

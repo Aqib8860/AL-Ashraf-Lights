@@ -15,6 +15,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/AL-Ashraf-Lights/',
-  
+  base: '/AL-Ashraf-Lights/'
 })
