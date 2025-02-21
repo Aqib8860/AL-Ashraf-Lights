@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -18,6 +19,11 @@ export function ProductCarousel() {
 
   return (
     <Carousel
+     plugins={[
+      Autoplay({
+        delay: 2000
+      })
+     ]}
       opts={{ align: "start" }}
       className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mt-4"
     >
