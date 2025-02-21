@@ -7,9 +7,14 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <Card className="bg-yellow-200 py-3 px-6 border-0 flex items-center justify-between rounded-2xl mt-0">
+        
+        <Card className="bg-yellow-200 py-3 px-6 border-0 flex items-center justify-between mt-0">
             {/* Left: Logo */}
-            <h1 className="text-2xl font-bold">AL ASHRAF LIGHTS</h1>
+            <div className="flex flex-col text-2xl font-bold">
+                
+                <h1>ASHRAFI</h1>
+                <h1>LIGHTS</h1>
+            </div>
 
             {/* Hamburger Icon (visible on small screens) */}
             <div className="md:hidden">
@@ -23,7 +28,7 @@ const Navbar = () => {
                 
                 <div className="hidden md:flex gap-4">
                     <input className="px-18 py-1.5 rounded-full bg-white" />
-                    <Button className="" variant="outline">Search</Button>
+                    <Button className="border-black" variant="outline">Search</Button>
                 </div>
                 
                 

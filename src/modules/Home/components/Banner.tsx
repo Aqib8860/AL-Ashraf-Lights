@@ -7,7 +7,7 @@ const Banner = () => {
             <div className="flex flex-col md:flex-row items-center justify-between">
                 
                 <div className="w-full md:w-1/2 mb-8 md:mb-0">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Welcome to AL Ashraf Lights</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Welcome to Ashrafi Lights</h1>
                     <p className="text-xl text-gray-600 mb-6">
                         We're redefining spaces with stylish, energy-efficient fancy lights. Quality, innovation, and seamless service—because your space deserves the best.
                     </p>
