@@ -6,7 +6,8 @@ import { BrowserRouter } from 'react-router'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/AL-Ashraf-Lights">
+    {/* <BrowserRouter basename="/AL-Ashraf-Lights"> */}
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>,

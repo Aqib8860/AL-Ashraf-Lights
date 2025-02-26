@@ -1,31 +1,25 @@
 import { Button } from "@/components/ui/button";
-import Footer from "@/modules/Footer/components/Footer";
-import Navbar from "@/modules/Navbar/components/Navbar";
-import DetailDropDownButton from "@/modules/Products/components/DetailDropDownButton";
-import ProductBreadcrumb from "@/modules/Products/components/ProductBreadCrumb";
-import { ProductCarousel } from "@/modules/Products/components/ProductCarousel";
-import { fetch_product_detail } from "@/modules/Products/services/api-clients";
-import { useSearchParams } from "react-router";
+import ProductBreadcrumb from "./ProductBreadCrumb";
+import { ProductCarousel } from "./ProductCarousel";
+import DetailDropDownButton from "./DetailDropDownButton";
+import { fetch_product_detail } from "../services/api-clients";
 
 
+const ProductDetail = ({id}: {id:any}) => {
+    console.log("Id ", id);
+    const product = fetch_product_detail(id);
 
-
-const ProductDetail = () => {
-    const [searchParams] = useSearchParams();
-    
-    const product = fetch_product_detail(searchParams.get('id'));
 
     return (
-        <>
-            <Navbar />
+        <div className="m-0 p-0 border-box">
             <div className="container mx-auto px-4 lg:px-12 py-12">
                 
 
-                {/* Responsive Product Layout */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     
-                    {/* Left Section - Image & Carousel */}
+                    {/* Left Image */}
                     <div className="flex flex-col items-center justify-center">
+
                     <ProductBreadcrumb product_name={product?.name || "...Loading"} />
                         <img 
                             className="h-80 w-80 md:h-96 md:w-96 object-cover rounded-lg shadow-md"
@@ -34,10 +28,11 @@ const ProductDetail = () => {
                         />
                         <div className="mt-4 w-full">
                             <ProductCarousel />
+
                         </div>
                     </div>
 
-                    {/* Right Section - Product Details */}
+                    {/* Product Details */}
                     <div className="flex flex-col space-y-4">
                         <h1 className="text-gray-700 text-2xl md:text-3xl font-semibold">
                             {product?.name}
@@ -47,7 +42,7 @@ const ProductDetail = () => {
                         </p>
                         <p className="text-gray-600">Bulbs Not Included</p>
 
-                        {/* Quantity Input */}
+                        {/* Quantity */}
                         <div className="flex items-center space-x-2">
                             <label className="font-medium text-gray-700">Quantity:</label>
                             <input 
@@ -57,14 +52,14 @@ const ProductDetail = () => {
                             />
                         </div>
 
-                        {/* Features Box */}
+                        {/* Box */}
                         <div className="p-4 border border-gray-300 rounded-lg bg-amber-100 space-y-2">
                             <p>✅ Upto 3 Year Warranty</p>
                             <p>✅ Hassle-Free Replacement</p>
                             <p>✅ 24/7 Customer Support</p>
                         </div>
 
-                        {/* Pincode Check */}
+                        {/* Pincode */}
                         <div className="space-y-2">
                             <p className="font-semibold text-gray-700">Check Delivery to Your Pincode</p>
                             <div className="flex space-x-2">
@@ -73,16 +68,17 @@ const ProductDetail = () => {
                                     placeholder="Enter Pincode"
                                 />
                                 <Button className="px-6 py-2">Check</Button>
+
                             </div>
                         </div>
 
-                        {/* Installation Service */}
+                        {/* Installation Service Option */}
                         <div className="flex items-center space-x-2">
                             <input type="checkbox" className="w-5 h-5" />
                             <p>Add Installation Service + Rs. 2500</p>
                         </div>
 
-                        {/* Buttons */}
+                        {/* 2 Buttons */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <Button className="w-full py-3 bg-blue-600 text-white hover:bg-blue-700">
                                 Add to Cart
@@ -97,6 +93,7 @@ const ProductDetail = () => {
                             ⭐ Add To Wishlist
                         </p>
                         <br />
+
                         <DetailDropDownButton
                             buttonName="Description" 
                             detail="
@@ -120,9 +117,9 @@ const ProductDetail = () => {
                         />
                     </div>
                 </div>
+                
             </div>
-        <Footer />
-        </>
+            </div>
     );
 }
 
