@@ -1,10 +1,10 @@
-import Navbar from "@/modules/Navbar/components/Navbar";
-import Footer from "@/modules/Footer/components/Footer";
-import Banner from "@/modules/Home/components/Banner";
-import ShopByCategory from "@/modules/Home/components/ShopByCategory";
-import SmallBanner from "@/modules/Home/components/SmallBanner";
-import ProductsSection from "@/modules/Home/components/ProductsSection";
-import ContactUsForm from "@/modules/Home/ContactUsForm";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Banner from "@/components/layout/Banner";
+import ShopByCategory from "@/components/shop/ShopByCategory";
+import SmallBanner from "@/components/common/SmallBanner";
+import ProductsSection from "@/components/product/ProductsSection";
+import ContactUsForm from "@/components/contactus/ContactUsForm";
 
 const Home = () => {
     return (
