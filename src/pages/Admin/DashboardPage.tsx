@@ -1,6 +1,5 @@
-import { AppSidebar } from "@/modules/Admin/AppSidebar";
-import OrderStatsCard from "@/modules/Admin/OrderStatsCard";
-// import Dashboard from "@/modules/Admin/Dashboard";
+import { AppSidebar } from "@/components/admin/AppSidebar";
+import OrderStatsCard from "@/components/order/OrderStatsCard";
 
 const DashboardPage = () => {
     return (

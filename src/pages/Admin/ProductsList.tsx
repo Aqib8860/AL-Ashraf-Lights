@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ProductCardSchema } from "@/modules/Admin/schemas/schemas";
-import { fetch_products_for_admin_card } from "@/modules/Admin/services/api-clients";
-import AdminProductCard from "@/modules/Products/components/AdminProductCard";
-import SortDropDown from "@/modules/shared/components/SortDropDown";
+import AdminProductCard from "@/components/product/AdminProductCard";
+import SortDropDown from "@/components/common/SortDropDown";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router";
+import { fetchProductsForAdmin } from "@/api/productApi";
+import { ProductCardSchema } from "@/schemas/productSchema";
 
 
 const ProductsList = () => {
@@ -15,7 +14,7 @@ const ProductsList = () => {
         const searchText = searchTextInput.current?.value;
         console.log(searchText); // for debugging purpose, remove this line before deploying
 
-        const productsData: ProductCardSchema[] = await fetch_products_for_admin_card(searchText);
+        const productsData: ProductCardSchema[] = await fetchProductsForAdmin(searchText, true);
         setProducts(productsData);
     }
     
@@ -25,14 +24,19 @@ const ProductsList = () => {
 
     return (
         <>
-        <div className="flex flex-col items-center justify-center px-4 py-12 bg-gray-100">
-            <h1 className="text-2xl font-bold">Products List</h1>
+        <div className="flex flex-col px-4 py-12 bg-gray-100">
+            <h1 className="text-2xl font-bold text-center">Products List</h1>
         </div>
         
-        <div className="flex flex-wrap gap-8 mt-6 justify-center">
-            <input type="text" ref={searchTextInput}
-                className="px-28 border border-black rounded-2xl" />
-            <Button className="text-sm" onClick={fetchAllProducts}>Search</Button>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
+            <input type="text" ref={searchTextInput} onChange={fetchAllProducts}
+                className="w-screen md:w-96 px-4 py-1 border border-black rounded-2xl" 
+            />
+            <Button 
+                className="w-full md:w-auto px-6 text-sm" 
+                onClick={fetchAllProducts}
+            >
+                Search</Button>
         </div>
         <div className="flex justify-evenly mt-8">
             <p className="text-2xl">Sort By : </p>
@@ -45,9 +49,9 @@ const ProductsList = () => {
                 
                 {
                     products.map((product) => (
-                            <Link key={product.id} to={`/product?id=${product.id}`}>
-                                <AdminProductCard key={product.id} product={product} />
-                        </Link>
+                            
+                            <AdminProductCard key={product.id} product={product} />
+                        
                     ))
                 }
                 

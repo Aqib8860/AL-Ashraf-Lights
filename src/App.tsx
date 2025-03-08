@@ -1,10 +1,11 @@
 import {Route, Routes } from "react-router";
 import Home from "./pages/Home"
-import ProductDetail from "./pages/Product/ProductDetailPage"
-import AddProductPage from "./pages/Admin/AddProductPage";
-import DashboardPage from "./pages/Admin/DashboardPage";
-import Layout from "./modules/Admin/Layout";
-import ProductsList from "./pages/Admin/ProductsList";
+import ProductDetail from "./pages/ProductDetail"
+import DashboardPage from "./pages/admin/DashboardPage";
+import Layout from "./components/admin/AdminLayout";
+import ProductsList from "./pages/admin/ProductsList";
+import ProductTablePage from "./pages/admin/ProductTablePage";
+import AddProduct from "./pages/admin/AddProduct";
 
 
 function App() {
@@ -21,8 +22,9 @@ function App() {
       
       <Route path="/admin/*" element={<Layout />}>
         <Route index element={<DashboardPage />} />
-        <Route path="products-table" element={<AddProductPage />} />
+        <Route path="products-table" element={<ProductTablePage />} />
         <Route path="products-list" element={<ProductsList /> } />
+        <Route path="add-product" element={<AddProduct /> } />
       </Route>
     </Routes>
     
