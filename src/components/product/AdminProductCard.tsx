@@ -43,7 +43,7 @@ const AdminProductCard = ({ product }: { product:  ProductCardSchema}) => {
                     }
                 </CardDescription>
                 <div className="flex justify-between">
-                    <p className="text-xl font-semibold text-amber-700 mt-2">₹{product.price}</p>
+                    <p className="text-xl font-semibold text-amber-700 mt-2">₹{product.sale_price}</p>
                     <p className="text-xl font-semibold text-amber-700 mt-2">Remaining : 5</p>
                 </div>
             </CardContent>

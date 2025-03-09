@@ -21,8 +21,12 @@ import { addProduct, uploadProductImage } from "@/api/productApi";
 
 const AddProduct = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const {register, handleSubmit, setValue, formState:{errors}} = useForm<AddProductSchema>({resolver:zodResolver(addProductSchema)});
+    const {register, handleSubmit, setValue, formState:{errors}} = useForm<AddProductSchema>({
+        resolver:zodResolver(addProductSchema),
+        defaultValues: {height: 0, width: 0, length: 0},
+    });
 
     const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -49,15 +53,23 @@ const AddProduct = () => {
         }
     };
 
-    const formSubmit = async (product: AddProductSchema) => {        
-        const productId = await addProduct(product);
-        const isImageUpload = await uploadImage(productId);
+    const formSubmit = async (product: AddProductSchema) => {    
+        setIsLoading(true);
+        try {    
+            const productId = await addProduct(product);
+            const isImageUpload = await uploadImage(productId);
         
-        if (isImageUpload) {
-            alert("Product added successfully");
-        }
-        else {
+            if (isImageUpload) {
+                alert("Product added successfully");
+            }
+            else {
+                alert("Failed to add product");
+            }
+        } catch (error) {
+            console.error(error);
             alert("Failed to add product");
+        } finally {
+            setIsLoading(false);
         }
 
     };
@@ -82,9 +94,15 @@ const AddProduct = () => {
                 </div>
 
                 <div className="space-y-5">
-                    <Label className="text-2xl">Price</Label>
-                    <Input {...register('price', { valueAsNumber: true })} type="number" placeholder="Enter Product Price" className="w-[500px]"/>
-                    <p className="text-red-500">{errors?.price?.message}</p>
+                    <Label className="text-2xl">Original Price</Label>
+                    <Input {...register('original_price', { valueAsNumber: true })} type="number" placeholder="Enter Product Original Price" className="w-[500px]"/>
+                    <p className="text-red-500">{errors?.original_price?.message}</p>
+                </div>
+
+                <div className="space-y-5">
+                    <Label className="text-2xl">Sale Price</Label>
+                    <Input {...register('sale_price', { valueAsNumber: true })} type="number" placeholder="Enter Product Original Price" className="w-[500px]"/>
+                    <p className="text-red-500">{errors?.sale_price?.message}</p>
                 </div>
                 
                 <div className="space-y-5">
@@ -142,7 +160,10 @@ const AddProduct = () => {
                 </div>
             </div>
             <div className="flex justify-center mb-5">
-                <Button>Submit</Button>
+                <Button type="submit" disabled={isLoading} className="flex items-center gap-2">
+                    {isLoading && <span className="loader"></span>} {/* Show loader when loading */}
+                    {isLoading ? "Submitting..." : "Submit"}
+            </Button>
             </div>
         </form>
         

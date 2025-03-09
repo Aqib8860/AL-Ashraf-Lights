@@ -24,7 +24,7 @@ import { Label } from "@/components/ui/label"
 
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { getProductDetail } from "@/api/productApi"
+import { getProductDetail, updateProduct } from "@/api/productApi"
 import { ProductSchema } from "@/schemas/productSchema"
 
 
@@ -48,8 +48,25 @@ const EditProduct = ({ productId }: { productId: number }) => {
         }
     };
 
-    const changeProduct = (data: ProductSchema) => {
-        console.log("Product updated:", data);
+    const changeProduct = async(data: ProductSchema) => {
+        try {
+            const response = await updateProduct(data);
+            if (response?.status === 200) {
+                handleDialogOpen(false);  // Close the modal after successful update
+                window.location.reload();
+                alert("Product updated successfully");
+                
+            } else {
+                console.error("Failed to update product:", response);
+                alert("Failed to update product");
+                handleDialogOpen(false);  // Close the modal if update fails
+            }
+        }
+        catch (error) {
+            console.error("Error updating product:", error);
+            alert("Failed to update product");
+            handleDialogOpen(false);  // Close the modal if update fails
+        }
     };
 
     return (
@@ -70,6 +87,13 @@ const EditProduct = ({ productId }: { productId: number }) => {
                     <div className="grid gap-4 py-4">
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="name" className="text-right">
+                                Id
+                            </Label>
+                            <Input {...register('id')} className="col-span-3" disabled/>
+                        </div>
+                        
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="name" className="text-right">
                                 Name
                             </Label>
                             <Input {...register('name')} className="col-span-3"/>
@@ -77,9 +101,16 @@ const EditProduct = ({ productId }: { productId: number }) => {
 
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="price" className="text-right">
-                                Price
+                                Sale Price
                             </Label>
-                            <Input type="number" {...register('price')} className="col-span-3"/>
+                            <Input type="number" {...register('sale_price')} className="col-span-3"/>
+                        </div>
+
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="price" className="text-right">
+                                Original Price
+                            </Label>
+                            <Input type="number" {...register('original_price')} className="col-span-3"/>
                         </div>
 
                         <div className="grid grid-cols-4 items-center gap-4">
@@ -110,7 +141,7 @@ const EditProduct = ({ productId }: { productId: number }) => {
                             <Label htmlFor="price" className="text-right">
                                 Description
                             </Label>
-                            <Input type="text" {...register('price')} className="col-span-3"/>
+                            <Input type="text" {...register('description')} className="col-span-3"/>
                         </div>
 
                         <div className="grid grid-cols-4 items-center gap-4">

@@ -1,11 +1,25 @@
-import { fetch_products } from "@/api/productApi";
+import { fetchProducts } from "@/api/productApi";
 import ProductCard from "@/components/product/ProductCard";
+import { ProductCardSchema } from "@/schemas/productSchema";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 
 const ProductsSection = () => {
-    const products = fetch_products();
+    const [products, setProducts] = useState<ProductCardSchema[]>([]);
     
+    const fetch_products = async () => {
+        try{
+            const productsData = await fetchProducts();
+            setProducts(productsData);
+            } 
+        catch(error) {
+            console.error(error);
+        }
+    }
+    useEffect(() => {
+        fetch_products();
+    }, []);
 
     return (
         

@@ -93,10 +93,23 @@ const testProducts = [
 ]
 
 
-export const fetch_products = () => {
-    return testProducts;
+// Fetch Products for Home Page
+export const fetchProducts = async () => {
+    try {
+        const response = await api.get("/products-list/");
+        if (response.status === 200) {
+            const products = response.data;
+            return products;
+        }
+    }
+    catch (error) {
+        console.error("Error fetching products", error);
+        return [];
+    }
 }
 
+
+// Fetch Product Details by ID - for Home
 export const fetch_product_detail = (product_id:any) => {
     const product = testProducts.find(product => product.id == product_id);
     return product;
@@ -173,3 +186,13 @@ export const getProductDetail = async(productId: number) => {
     }
 }
 
+
+export const updateProduct = async(product: ProductSchema) => {
+    try{
+        const response = await api.patch(`/product/${product.id}/`, product)
+        return response;
+        }
+    catch (error) {
+        console.error("Error updating product", error);
+    }
+}
